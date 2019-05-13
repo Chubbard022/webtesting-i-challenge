@@ -8,15 +8,24 @@ const compareTo = {
 }
 
 describe("enhancer.js",()=>{
-    describe("repair() method",()=>{
+    describe("enhancer methods()",()=>{
         it("should return durability restored to 100 ",()=>{
-            let test = {
+            let repairTest = {
                 name: "test",
                 durability:100,
                 enhancement: 20
             }
             expect(enhancer.repair(compareTo)).toEqual(compareTo)
-            expect(enhancer.repair(compareTo)).toEqual({...test,durability:100})
+            expect(enhancer.repair(compareTo)).toEqual({...repairTest,durability:100})
+        })
+        it("should increase enhancement levels if lower than 20 ,",()=>{
+            let succeedTest = {
+                name: "test",
+                durability:100,
+                enhancement: 18
+            }
+            expect(enhancer.succeed(compareTo)).toEqual(compareTo)
+            expect(enhancer.succeed(succeedTest)).toEqual({...succeedTest,enhancement:19})
         })
     })
 })
