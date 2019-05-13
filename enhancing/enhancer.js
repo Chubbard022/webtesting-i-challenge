@@ -14,6 +14,12 @@ function fail(item) {
 }
 
 function repair(item) {
+  if(item.durability === 100){
+    return {...item}
+  }else{
+    item.durability = 100
+      return {...item}
+  }
   return { ...item };
 }
 
