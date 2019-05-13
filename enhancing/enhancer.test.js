@@ -27,5 +27,20 @@ describe("enhancer.js",()=>{
             expect(enhancer.succeed(compareTo)).toEqual(compareTo)
             expect(enhancer.succeed(succeedTest)).toEqual({...succeedTest,enhancement:19})
         })
+        it("should decrease durability or enhancers given enhancer levels ",()=>{
+            let failTestOne = {
+                name: "test",
+                durability:100,
+                enhancement: 17
+            }
+            let failTestTwo = {
+                name: "test",
+                durability:100,
+                enhancement: 10
+            }
+            expect(enhancer.fail(compareTo)).toEqual(compareTo)
+            expect(enhancer.fail(failTestOne)).toEqual({...failTestOne, durability:90})
+            expect(enhancer.fail(failTestTwo)).toEqual({...failTestTwo, durability: 95})
+        })
     })
 })
