@@ -42,5 +42,14 @@ describe("enhancer.js",()=>{
             expect(enhancer.fail(failTestOne)).toEqual({...failTestOne, durability:90})
             expect(enhancer.fail(failTestTwo)).toEqual({...failTestTwo, durability: 95})
         })
+        it("should return the name property given conditions",()=>{
+            let getTest = {
+                name: "test",
+                durability:100,
+                enhancement: 0
+            }
+            expect(enhancer.get(compareTo)).toEqual({...compareTo,name:"test19"})
+            expect(enhancer.get(getTest)).toEqual(getTest)
+        })
     })
 })

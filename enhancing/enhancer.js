@@ -15,17 +15,17 @@ function succeed(item) {
 }
 
 function fail(item) {
-  if(item.enhancement >15){
-    item.durability -= 10;
-      return {...item}
-  }else if(item.enhancement > 16){
-      item.durability -=10;
-      item.enhancement -= 1;
-        return {...item}
-  }else{
+  if (item.enhancement < 15) {
     item.durability -= 5;
-      return {...item}
+  } else if (item.enhancement > 15) {
+    item.durability -= 10;
+
+    if (item.enhancement > 16) {
+      item.enhancement -= 1;
+    }
   }
+
+  return { ...item };
 }
 
 function repair(item) {
@@ -35,9 +35,11 @@ function repair(item) {
     item.durability = 100
       return {...item}
   }
-  return { ...item };
 }
 
 function get(item) {
-  return { ...item };
+  if(item.enhancement > 0){
+    item.name += `${item.enhancement}`
+  }
+  return {...item}
 }
